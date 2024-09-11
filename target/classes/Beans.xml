@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="https://www.springframework.org/schema/beans"
+    xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        https://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+    
+   <!-- <bean id="payment" class="in.karthik.practice.AmexCardPayment"/>//Amex Credit card will be dependent by using of the autowire ByName Mode-->
+    <bean id="credit" class="in.karthik.practice.CreditCardPayment" primary="true"/>  //Two ways to write the byType mode in the Autowire
+    <bean id="debit" class="in.karthik.practice.DebitCardPayment" autowire-candiate="false"/>
+    <bean id="sodexo" class="in.karthik.practice.SodexoCardPayment"/>
+<!--    <bean id="payment" class="in.karthik.practice.PaymentService" autowire="byName"> //Autowire By Name
+-->    
+<bean id="payment" class="in.karthik.practice.PaymentService" autowire="byType"> 
+<!--<constructor-arg name="payment" ref="credit"/>  Constructor Injection
+<property name="payment" ref="debit"/>    Setter Injection -->
+</bean>
+</beans>
